@@ -10,8 +10,7 @@ function termToCssSelector(term) {
 
 module.exports = function testSubjSelector(selector) {
   var cssSelectors = [];
-  var subjectSelector = selectors.shift();
-  var terms = seletorToTerms(subjectSelector);
+  var terms = seletorToTerms(selector);
 
   while (terms.length) {
     var term = terms.shift();
