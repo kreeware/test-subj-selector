@@ -8,23 +8,16 @@ function termToCssSelector(term) {
   return term ? '[data-test-subj~="' + term + '"]' : '';
 }
 
-module.exports = function testSubjSelector(/* ...selectors */) {
-  var selectors = Array.prototype.slice.call(arguments);
+module.exports = function testSubjSelector(selector) {
   var cssSelectors = [];
+  var subjectSelector = selectors.shift();
+  var terms = seletorToTerms(subjectSelector);
 
-  while (selectors.length) {
-    var cssSelectorParts = [];
-    var subjectSelector = selectors.shift();
-    var terms = seletorToTerms(subjectSelector);
-
-    while (terms.length) {
-      var term = terms.shift();
-      // split each term by joins/& and map to css selectors
-      cssSelectorParts.push(term.split('&').map(termToCssSelector).join(''));
-    }
-
-    cssSelectors.push(cssSelectorParts.join(' '));
+  while (terms.length) {
+    var term = terms.shift();
+    // split each term by joins/& and map to css selectors
+    cssSelectors.push(term.split('&').map(termToCssSelector).join(''));
   }
 
-  return cssSelectors;
+  return cssSelectors.join(' ');
 };
