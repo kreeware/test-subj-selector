@@ -6,6 +6,10 @@
   "scripts": {
     "test": "mocha test"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kreeware/test-subj-selector.git"
+  },
   "keywords": [],
   "author": "Spencer Alger <email@spalger.com>",
   "license": "Apache-2.0",
